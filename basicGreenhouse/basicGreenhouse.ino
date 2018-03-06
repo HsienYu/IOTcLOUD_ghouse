@@ -25,16 +25,16 @@ static const uint8_t D15 = 5;
 
 */
 
-#include <ESP8266WiFi.h>
-#include "DHT.h"
+#include <ESP8266WiFi.h> //library for the WeMos Board
+#include "DHT.h" //Library for the Temperature and humidity sensor
 
-float oldTemp;
-float oldHum;
+float oldTemp; //not relevant
+float oldHum;  //not relevant
 
 int treshold_value = 580; // adjust value for soil moisture sensor
-int old_soilMH_value;
+int old_soilMH_value; // not relevant
 
-DHT dht;
+DHT dht; //dht variable from the library
 
 
 
@@ -45,8 +45,8 @@ void setup() {
 
     dht.setup(4); // data pin 4
   
-    oldTemp = -1;
-    oldHum = -1;
+    oldTemp = -1; // not relevant
+    oldHum = -1; // not relevant
 
     old_soilMH_value = -1;
 
@@ -54,6 +54,7 @@ void setup() {
     pinMode(16, OUTPUT);// d2 as digital pin 16
 }
 
+//the block of clode below is used to output the data.
 
 void loop() {
   delay(dht.getMinimumSamplingPeriod());
@@ -78,6 +79,8 @@ void loop() {
   Serial.print("SoilMositure:");
   Serial.print(soilMH_value);
   Serial.println("%");
+
+//Task - Students need to explain the system control below.
 
   if(soilMH_value < 60 || hum < 20){
     digitalWrite(13,HIGH);
