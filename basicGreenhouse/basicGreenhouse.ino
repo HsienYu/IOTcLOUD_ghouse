@@ -87,6 +87,9 @@ void loop() {
     delay(5000);
   }else if(temp > 27){
     digitalWrite(16,HIGH);
+  }else{
+    digitalWrite(16,LOW);
+    digitalWrite(13,LOW);
   }
   
 
